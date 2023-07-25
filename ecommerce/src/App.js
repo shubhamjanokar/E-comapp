@@ -8,7 +8,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Cart from './features/cart/Cart';
+import Cartpage from './pages/Cartpage'
+import Cheackout from './pages/Cheackout';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/cart",
-    element: <Cart></Cart>,
+    element: <Cartpage></Cartpage>,
+  },
+  {
+    path: "/cheackout",
+    element: <Cheackout></Cheackout>,
   },
 ]);
 
