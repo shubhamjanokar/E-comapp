@@ -6,11 +6,11 @@ const initialState = {
   status: 'idle',
 };
 
-
 export const incrementAsync = createAsyncThunk(
   'counter/fetchCount',
   async (amount) => {
     const response = await fetchCount(amount);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -23,7 +23,6 @@ export const counterSlice = createSlice({
       state.value += 1;
     },
   },
-  
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {

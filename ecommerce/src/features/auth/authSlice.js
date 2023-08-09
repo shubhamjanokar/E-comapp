@@ -6,16 +6,16 @@ const initialState = {
   status: 'idle',
 };
 
-
 export const incrementAsync = createAsyncThunk(
   'counter/fetchCount',
   async (amount) => {
     const response = await fetchCount(amount);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
-export const authSlice = createSlice({
+export const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
@@ -23,7 +23,6 @@ export const authSlice = createSlice({
       state.value += 1;
     },
   },
-  
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {
@@ -36,8 +35,8 @@ export const authSlice = createSlice({
   },
 });
 
-export const { increment } = authSlice.actions;
+export const { increment } = counterSlice.actions;
 
 export const selectCount = (state) => state.counter.value;
 
-export default authSlice.reducer;
+export default counterSlice.reducer;
